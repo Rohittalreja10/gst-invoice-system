@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Allow authenticated users to create, read, and update documents in the 'bookings' collection.
+    // This assumes your client-side app will use Firebase Authentication.
+    match /bookings/{bookingId} {
+      allow create: if request.auth != null;
+      allow read:   if request.auth != null;
+      allow update: if request.auth != null; // In a real app, you'd likely refine this further,
+                                            // e.g., allow users to only update their own bookings.
+      allow delete: if false; // Deny deletion by default, as it's not a core requirement for this task.
+    }
+
+    // Default rule: Deny all access to any other collections
+    // This ensures that only explicitly defined paths above are accessible.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
