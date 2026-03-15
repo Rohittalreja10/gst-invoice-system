@@ -14,7 +14,6 @@ exports.generateGSTInvoice = onDocumentUpdated(
     const beforeData = event.data.before.data();
     const afterData = event.data.after.data();
 
-    // Run only when status changes to finished
     if (beforeData.status !== "finished" && afterData.status === "finished") {
       const name = afterData.name;
       const amount = Number(afterData.totalBookingAmount);
@@ -54,10 +53,6 @@ exports.generateGSTInvoice = onDocumentUpdated(
         logger.error("GST API call failed", error.message);
       }
       logger.info("GST Invoice Generated", invoice);
-
-      // Here you would call external GST API
-      // Example placeholder
-      // await axios.post("https://example-gst-api.com/file", invoice);
     }
   },
 );

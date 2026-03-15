@@ -302,3 +302,7 @@ Possible enhancements include:
 
 This project demonstrates an automated GST invoicing workflow using **Firebase Firestore and Cloud Functions**.
 The system automatically generates GST invoices based on booking completion events and integrates with external APIs to simulate GST filing, showcasing a scalable event-driven backend architecture.
+
+# url for video
+
+https://drive.google.com/file/d/1D4x9-oLTWCHcmW1n1sYPYXMz7ELSBwie/view?usp=drive_link
